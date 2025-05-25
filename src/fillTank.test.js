@@ -114,4 +114,18 @@ describe('fillTank', () => {
     expect(customer.money).toBe(691);
     expect(customer.vehicle.fuelRemains).toBe(35.9);
   });
+
+  it(`should not fill if 'amount' = 0`, () => {
+    const customer = {
+      money: 1000,
+      vehicle: {
+        maxTankCapacity: 40,
+        fuelRemains: 5,
+      },
+    };
+
+    fillTank(customer, 10, 0);
+    expect(customer.money).toBe(1000);
+    expect(customer.vehicle.fuelRemains).toBe(5);
+  });
 });
